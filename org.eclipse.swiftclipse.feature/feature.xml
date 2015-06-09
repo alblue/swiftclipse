@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.swiftclipse.feature"
+      label="Swiftclipse Feature"
+      version="0.0.0.qualifier"
+      provider-name="Alex Blewitt">
+
+   <description url="https://github.com/alblue/swiftclipse">
+      Swift IDE for Eclipse
+   </description>
+
+   <copyright>
+      Copyright (c) Bandlem Ltd.
+   </copyright>
+
+   <license url="https://www.eclipse.org/legal/epl-v10.html">
+      Released under the Eclipse Public License - Version 1.0
+
+      See https://www.eclipse.org/legal/epl-v10.html for full details
+   </license>
+
+   <plugin
+         id="org.eclipse.swiftclipse.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.swiftclipse.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,13 @@
+Bundle-ActivationPolicy: lazy
+Bundle-Copyright: Copyright (c) 2015, Bandlem Ltd
+Bundle-ManifestVersion: 2
+Bundle-Name: Swiftclipse UI
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: org.eclipse.swiftclipse.ui;singleton:=true
+Bundle-Vendor: Bandlem Ltd
+Bundle-Version: 0.0.0.qualifier
+Eclipse-SourceReferences: scm:git:http://github.com/alblue/swiftclipse;path="org.eclipse.swiftclipse.ui"
+Export-Package: org.eclipse.swiftclipse.ui
+Import-Package: org.eclipse.swiftclipse.core,
+ org.osgi.framework;version="1.5.0"
+Manifest-Version: 1.0
