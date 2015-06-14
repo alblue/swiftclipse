@@ -8,9 +8,18 @@ Program:
 Statement:
 	'var' ID ':' Type ';';
 
+// Should admit:
+// var i:Int;
+// var b:Bool;
+// var ii:[Int];
+// var bb:[Bool];
+// var all:[Int?!?!]??!!
+
 Type:
 	'Int' |
 //	Type '?' |
+//	Type '!' |
+	'[' Type ']' |
 	'Bool';
 
 
