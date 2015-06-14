@@ -1,0 +1,1029 @@
+grammar org.eclipse.swiftclipse.xtext.Swift with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.eclipse.org/swiftclipse/Swift"
+
+// Generated from Swift-1.2.xml
+Swift:
+	TopLevelDeclaration;
+
+Identifier:
+	ID;
+
+DecimalDigits:
+	INT;
+
+/* Summary of the Grammar */
+
+/* Statements */
+Statement:
+	Expression ';'? |
+	Declaration ';'? |
+	LoopStatement ';'? |
+	BranchStatement ';'? |
+	LabeledStatement ';'? |
+	ControlTransferStatement ';'?;
+
+Statements:
+	statements+=Statement+;
+
+LoopStatement:
+	ForStatement |
+	ForInStatement |
+	WhileStatement |
+	DoWhileStatement;
+
+ForStatement:
+	'for' init=ForInit? ';' test=Expression? ';' step=Expression? body=CodeBlock |
+	'for' '(' init=ForInit? ';' test=Expression? ';' step=Expression? ')' body=CodeBlock;
+
+ForInit:
+	VariableDeclaration |
+	ExpressionList;
+
+ForInStatement:
+	'for' pattern=Pattern 'in' expr=Expression body=CodeBlock;
+
+WhileStatement:
+	'while' test=WhileCondition body=CodeBlock;
+
+WhileCondition:
+	Expression |
+	Expression? bindings=OptionalBindingList;
+
+OptionalBindingList:
+	bindings+=OptionalBindingClause (',' bindings+=OptionalBindingClause)*;
+
+OptionalBindingClause:
+	head=OptionalBindingHead continuation=OptionalBindingContinuationList? guard=GuardClause?;
+
+OptionalBindingHead:
+	'let' IdentifierPattern init=Initializer |
+	'var' IdentifierPattern init=Initializer;
+
+OptionalBindingContinuationList:
+	coninuations+=OptionalBindingContinuation (',' coninuations+=OptionalBindingContinuationList)*;
+
+OptionalBindingContinuation:
+	IdentifierPattern init=Initializer |
+	OptionalBindingHead;
+
+DoWhileStatement:
+	'do' body=CodeBlock 'while' test=Expression;
+
+BranchStatement:
+	IfStatement |
+	SwitchStatement;
+
+IfStatement:
+	'if' test=IfCondition body=CodeBlock else=ElseClause?;
+
+IfCondition:
+	Expression |
+	Expression? bindings=OptionalBindingList;
+
+ElseClause:
+	'else' CodeBlock |
+	'else' IfStatement;
+
+SwitchStatement:
+	'switch' test=Expression '{' cases=SwitchCases? '}';
+
+SwitchCases:
+	cases+=SwitchCase+;
+
+SwitchCase:
+	label=CaseLabel body=Statements |
+	DefaultLabel body=Statements |
+	CaseLabel ';' |
+	DefaultLabel ';';
+
+CaseLabel:
+	'case' CaseItemList ':';
+
+CaseItemList:
+	cases+=CaseItem*;
+
+CaseItem:
+	pattern=Pattern guard=GuardClause?;
+
+DefaultLabel:
+	'default' ':';
+
+GuardClause:
+	'where' GuardExpression;
+
+GuardExpression:
+	Expression;
+
+LabeledStatement:
+	StatementLabel LoopStatement |
+	StatementLabel SwitchStatement;
+
+StatementLabel:
+	LabelName ':';
+
+LabelName:
+	Identifier;
+
+ControlTransferStatement:
+	BreakStatement |
+	ContinueStatement |
+	FallthroughStatement |
+	ReturnStatement;
+
+BreakStatement:
+	'break' LabelName?;
+
+ContinueStatement:
+	'continue' LabelName?;
+
+FallthroughStatement:
+	'fallthrough';
+
+ReturnStatement:
+	'return' Expression?;
+
+/* Generic Parameters and Arguments */
+GenericParameterClause:
+	'<' parameters=GenericParameterList requirement=RequirementClause? '>';
+
+GenericParameterList:
+	parameters+=GenericParameter (',' parameters+=GenericParameter)*;
+
+GenericParameter:
+	TypeName |
+	TypeName ':' TypeIdentifier |
+	TypeName ':' ProtocolCompositionType;
+
+RequirementClause:
+	'where' RequirementList;
+
+RequirementList:
+	requirements+=Requirement (',' requirements+=Requirement)*;
+
+Requirement:
+	ConformanceRequirement |
+	SameTypeRequirement;
+
+ConformanceRequirement:
+	left=TypeIdentifier ':' right=TypeIdentifier |
+	left=TypeIdentifier ':' right=ProtocolCompositionType;
+
+SameTypeRequirement:
+	left=TypeIdentifier '==' right=Type;
+
+GenericArgumentClause:
+	'<' GenericArgumentList '>';
+
+GenericArgumentList:
+	arguments+=GenericArgument (',' arguments+=GenericArgumentList);
+
+GenericArgument:
+	Type;
+
+/* Declarations */
+Declarations:
+	declarations+=(Declaration)+;
+
+Declaration:
+	ImportDeclaration |
+	ConstantDeclaration |
+	VariableDeclaration |
+	TypealiasDeclaration |
+	FunctionDeclaration |
+	EnumDeclaration |
+	StructDeclaration |
+	ClassDeclaration |
+	ProtocolDeclaration |
+	InitializerDeclaration |
+	DeinitializerDeclaration |
+	ExtensionDeclaration |
+	SubscriptDeclaration |
+	OperatorDeclaration;
+
+TopLevelDeclaration:
+	Statements?;
+
+CodeBlock:
+	'{' Statements? '}';
+
+ImportDeclaration:
+	attributes=Attributes? 'import' ImportKind? ImportPath;
+
+ImportKind:
+	'typealias' |
+	'struct' |
+	'class' |
+	'enum' |
+	'protocol' |
+	'var' |
+	'func';
+
+ImportPath:
+	segments+=ImportPathIdentifier ('.' segments+=ImportPathIdentifier)*;
+
+ImportPathIdentifier:
+	Identifier |
+	Operator;
+
+ConstantDeclaration:
+	attributes=Attributes? modifiers=DeclarationModifiers? 'let' patterns=PatternInitializerList;
+
+PatternInitializerList:
+	initializer+=PatternInitializer (',' initializer+=PatternInitializerList)*;
+
+PatternInitializer:
+	Pattern init=Initializer?;
+
+Initializer:
+	'=' Expression;
+
+VariableDeclaration:
+	VariableDeclarationHead patterns=PatternInitializerList |
+	VariableDeclarationHead name=VariableName type=TypeAnnotation body=CodeBlock |
+	VariableDeclarationHead name=VariableName type=TypeAnnotation getterSetter=GetterSetterBlock |
+	VariableDeclarationHead name=VariableName type=TypeAnnotation getterSetterKeyword=GetterSetterKeywordBlock |
+	VariableDeclarationHead name=VariableName init=Initializer willDidSet=WillsetDidsetBlock |
+	VariableDeclarationHead name=VariableName type=TypeAnnotation init=Initializer? willDidSet=WillsetDidsetBlock;
+
+VariableDeclarationHead:
+	attributes=Attributes? modifiers=DeclarationModifiers? 'var';
+
+VariableName:
+	Identifier;
+
+	// TODO see if there's a better way to do this
+GetterSetterBlock:
+	'{' getter=GetterClause setter=SetterClause? '}' |
+	'{' setter=SetterClause getter=GetterClause '}';
+
+GetterClause:
+	attributes=Attributes? 'get' body=CodeBlock;
+
+SetterClause:
+	attributes=Attributes? 'set' name=SetterName? body=CodeBlock;
+
+SetterName:
+	'(' Identifier ')';
+
+GetterSetterKeywordBlock:
+	'{' getter=GetterKeywordClause setter=SetterKeywordClause? '}' |
+	'{' setter=SetterKeywordClause getter=GetterKeywordClause '}';
+
+GetterKeywordClause:
+	attributes=Attributes? 'get';
+
+SetterKeywordClause:
+	attributes=Attributes? 'set';
+
+WillsetDidsetBlock:
+	'{' willset=WillsetClause didset=DidsetClause? '}' |
+	'{' didset=DidsetClause willset=WillsetClause? '}';
+
+WillsetClause:
+	attributes=Attributes? 'willSet' name=SetterName? body=CodeBlock;
+
+DidsetClause:
+	attributes=Attributes? 'didSet' name=SetterName? body=CodeBlock;
+
+TypealiasDeclaration:
+	head=TypealiasHead assignment=TypealiasAssignment;
+
+TypealiasHead:
+	attributes=Attributes? modifiers=AccessLevelModifier? 'typealias' name=TypealiasName;
+
+TypealiasName:
+	Identifier;
+
+TypealiasAssignment:
+	'=' Type;
+
+FunctionDeclaration:
+	head=FunctionHead name=FunctionName generic=GenericParameterClause? signature=FunctionSignature body=FunctionBody;
+
+FunctionHead:
+	attributes=Attributes? DeclarationModifiers? 'func';
+
+FunctionName:
+	Identifier |
+	Operator;
+
+FunctionSignature:
+	clauses+=ParameterClause+ result=FunctionResult?;
+
+FunctionResult:
+	'->' attributes=Attributes? type=Type;
+
+FunctionBody:
+	CodeBlock;
+
+ParameterClause:
+	'(' ')' |
+	'(' ParameterList '...'? ')';
+
+ParameterList:
+	parameters+=Parameter (',' parameters+=Parameter)*;
+
+Parameter:
+	'inout'? 'let'? '#'? external=ExternalParameterName? local=LocalParameterName type=TypeAnnotation
+	defaultArgument=DefaultArgumentClause? |
+	'inout'? 'var' '#'? external=ExternalParameterName? local=LocalParameterName type=TypeAnnotation
+	defaultArgument=DefaultArgumentClause? |
+	attributes=Attributes? type=Type;
+
+ExternalParameterName:
+	Identifier | '_';
+
+LocalParameterName:
+	Identifier | '_';
+
+DefaultArgumentClause:
+	'=' Expression;
+
+EnumDeclaration:
+	attributes=Attributes? modifier=AccessLevelModifier? enumm=UnionStyleEnum |
+	attributes=Attributes? modifier=AccessLevelModifier? enumm=RawValueStyleEnum;
+
+UnionStyleEnum:
+	'enum' name=EnumName generic=GenericParameterClause? inherits=TypeInheritanceClause? '{' members=UnionStyleEnumMember*
+	'}';
+
+UnionStyleEnumMember:
+	Declaration |
+	UnionStyleEnumCaseClause;
+
+UnionStyleEnumCaseClause:
+	attributes=Attributes? 'case' cases=UnionStyleEnumCaseList;
+
+UnionStyleEnumCaseList:
+	cases+=UnionStyleEnumCase (',' cases+=UnionStyleEnumCase)*;
+
+UnionStyleEnumCase:
+	EnumCaseName TupleType?;
+
+EnumName:
+	Identifier;
+
+EnumCaseName:
+	Identifier;
+
+RawValueStyleEnum:
+	'enum' name=EnumName generic=GenericParameterClause? inherits=TypeInheritanceClause '{'
+	members=RawValueStyleEnumMember+ '}';
+
+RawValueStyleEnumMember:
+	Declaration |
+	RawValueStyleEnumCaseClause;
+
+RawValueStyleEnumCaseClause:
+	attributes=Attributes? 'case' cases=RawValueStyleEnumCaseList;
+
+RawValueStyleEnumCaseList:
+	cases+=RawValueStyleEnumCase (',' cases+=RawValueStyleEnumCaseList)*;
+
+RawValueStyleEnumCase:
+	EnumCaseName RawValueAssignment?;
+
+RawValueAssignment:
+	'=' RawValueLiteral;
+
+RawValueLiteral:
+	NumericLiteral |
+	StringLiteral |
+	BooleanLiteral;
+
+StructDeclaration:
+	attributes=Attributes? modifier=AccessLevelModifier?
+	'struct' StructName GenericParameterClause?
+	inherits=TypeInheritanceClause? body=StructBody;
+
+StructName:
+	Identifier;
+
+StructBody:
+	'{' Declarations? '}';
+
+ClassDeclaration:
+	attributes=Attributes? modifier=AccessLevelModifier?
+	'class' ClassName GenericParameterClause?
+	inherits=TypeInheritanceClause? body=ClassBody;
+
+ClassName:
+	Identifier;
+
+ClassBody:
+	'{' Declarations? '}';
+
+ProtocolDeclaration:
+	attributes=Attributes? modifier=AccessLevelModifier?
+	'protocol' ProtocolName
+	inherits=TypeInheritanceClause? body=ProtocolBody;
+
+ProtocolName:
+	Identifier;
+
+ProtocolBody:
+	'{' declarations=ProtocolMemberDeclaration* '}';
+
+ProtocolMemberDeclaration:
+	ProtocolPropertyDeclaration |
+	ProtocolMethodDeclaration |
+	ProtocolInitializerDeclaration |
+	ProtocolSubscriptDeclaration |
+	ProtocolAssociatedTypeDeclaration;
+
+ProtocolPropertyDeclaration:
+	head=VariableDeclarationHead name=VariableName annotation=TypeAnnotation getterSetter=GetterSetterKeywordBlock;
+
+ProtocolMethodDeclaration:
+	head=FunctionHead name=FunctionName generic=GenericParameterClause? signature=FunctionSignature;
+
+ProtocolInitializerDeclaration:
+	head=InitializerHead generic=GenericParameterClause? parameter=ParameterClause;
+
+ProtocolSubscriptDeclaration:
+	head=SubscriptHead result=SubscriptResult getterSetter=GetterSetterKeywordBlock;
+
+ProtocolAssociatedTypeDeclaration:
+	head=TypealiasHead inherits=TypeInheritanceClause? typealias=TypealiasAssignment?;
+
+InitializerDeclaration:
+	head=InitializerHead generic=GenericParameterClause? parameter=ParameterClause body=InitializerBody;
+
+InitializerHead:
+	attributes=Attributes? modifiers=DeclarationModifiers? 'init' |
+	attributes=Attributes? modifiers=DeclarationModifiers? 'init' '?' |
+	attributes=Attributes? modifiers=DeclarationModifiers? 'init' '!';
+
+InitializerBody:
+	body=CodeBlock;
+
+DeinitializerDeclaration:
+	attributes=Attributes? 'deinit' body=CodeBlock;
+
+ExtensionDeclaration:
+	modifier=AccessLevelModifier? 'extension' identifier=TypeIdentifier inherits=TypeInheritanceClause?
+	body=ExtensionBody;
+
+ExtensionBody:
+	'{' Declarations? '}';
+
+SubscriptDeclaration:
+	head=SubscriptHead result=SubscriptResult body=CodeBlock |
+	head=SubscriptHead result=SubscriptResult getterSetterBlock=GetterSetterBlock |
+	head=SubscriptHead result=SubscriptResult getterSetterKeywordBlock=GetterSetterKeywordBlock;
+
+SubscriptHead:
+	attributes=Attributes? modifiers=DeclarationModifiers? 'subscript' parameter=ParameterClause;
+
+SubscriptResult:
+	'->' attributes=Attributes? type=Type;
+
+OperatorDeclaration:
+	PrefixOperatorDeclaration |
+	PostfixOperatorDeclaration |
+	InfixOperatorDeclaration;
+
+PrefixOperatorDeclaration:
+	'prefix' 'operator' Operator '{' '}';
+
+PostfixOperatorDeclaration:
+	'postfix' 'operator' Operator '{' '}';
+
+InfixOperatorDeclaration:
+	'infix' 'operator' Operator '{' InfixOperatorAttributes? '}';
+
+InfixOperatorAttributes:
+	PrecedenceClause? AssociativityClause?;
+
+PrecedenceClause:
+	'precedence' PrecedenceLevel;
+
+	// TODO 0-255
+PrecedenceLevel:
+	INT;
+
+terminal AssociativityClause:
+	'associativity' Associativity;
+
+terminal Associativity:
+	'left' |
+	'right' |
+	'none';
+
+terminal DeclarationModifier:
+	'class' |
+	'convenience' |
+	'dynamic' |
+	'final' |
+	'infix' |
+	'lazy' |
+	'mutating' |
+	'nonmutating' |
+	'optional' |
+	'override' |
+	'postfix' |
+	'prefix' |
+	'required' |
+	'static' |
+	'unowned' |
+	'unowned' '(' 'safe' ')' |
+	'unowned' '('
+	'unsafe' ')' |
+	'weak' |
+	AccessLevelModifier;
+
+DeclarationModifiers:
+	DeclarationModifier+;
+
+terminal AccessLevelModifier:
+	'internal' |
+	'internal' '(' 'set' ')' |
+	'private' |
+	'private' '(' 'set' ')' |
+	'public' |
+	'public' '(' 'set' ')';
+
+AccessLevelModifiers:
+	AccessLevelModifier+;
+
+/* Patterns */
+Pattern:
+	WildcardPattern annotation=TypeAnnotation? |
+	IdentifierPattern annotation=TypeAnnotation? |
+	ValueBindingPattern |
+	TuplePattern annotation=TypeAnnotation? |
+	EnumCasePattern |
+	TypeCastingPattern |
+	ExpressionPattern;
+
+WildcardPattern:
+	'_';
+
+IdentifierPattern:
+	Identifier;
+
+ValueBindingPattern returns Pattern:
+	'var' Pattern |
+	'let' Pattern;
+
+TuplePattern:
+	'(' TuplePatternElementList? ')';
+
+TuplePatternElementList:
+	list+=TuplePatternElement (',' list+=TuplePatternElement)*;
+
+TuplePatternElement:
+	Pattern;
+
+EnumCasePattern:
+	TypeIdentifier? '.' name=EnumCaseName pattern=TuplePattern?;
+
+TypeCastingPattern:
+	IsPattern |
+	AsPattern;
+
+IsPattern:
+	'is' type=Type;
+
+AsPattern:
+	pattern=Pattern 'as' type=Type;
+
+ExpressionPattern:
+	Expression;
+
+/* Attributes */
+Attribute:
+	'@' AttributeName AttributeArgumentClause?;
+
+AttributeName:
+	Identifier;
+
+AttributeArgumentClause:
+	'(' BalancedTokens? ')';
+
+Attributes:
+	attributes+=Attribute+;
+
+BalancedTokens:
+	BalancedToken+;
+
+	// TODO This is wrong, it should not have brackets here
+BalancedToken:
+	'(' BalancedTokens? ')' |
+	'[' BalancedTokens? ']' |
+	'{' BalancedTokens? '}' |
+	ANY_OTHER;
+
+/* Expressions */
+Expression:
+	prefix=PrefixExpression expressions=BinaryExpressions?;
+
+ExpressionList:
+	expressions+=Expression (',' expressions+=Expression)*;
+
+PrefixExpression:
+	prefix=PrefixOperator? postfix=PostfixExpression |
+	InOutExpression;
+
+InOutExpression:
+	'&' Identifier;
+
+BinaryExpression:
+	BinaryOperator prefix=PrefixExpression |
+	AssignmentOperator prefix=PrefixExpression |
+	ConditionalOperator prefix=PrefixExpression |
+	TypeCastingOperator;
+
+BinaryExpressions:
+	expressions+=BinaryExpression+;
+
+AssignmentOperator:
+	'=';
+
+ConditionalOperator:
+	'?' Expression ':';
+
+TypeCastingOperator:
+	'is' Type |
+	'as' Type |
+	'as' '?' Type |
+	'as' '!' Type;
+
+PrimaryExpression:
+	Identifier GenericArgumentClause? |
+	LiteralExpression |
+	SelfExpression |
+	SuperclassExpression |
+	ClosureExpression |
+	ParenthesizedExpression |
+	ImplicitMemberExpression |
+	WildcardExpression;
+
+LiteralExpression:
+	Literal |
+	ArrayLiteral |
+	DictionaryLiteral |
+	'__FILE__' |
+	'__LINE__' |
+	'__COLUMN__' |
+	'__FUNCTION__';
+
+ArrayLiteral:
+	'[' ArrayLiteralItems? ']';
+
+ArrayLiteralItems:
+	items+=ArrayLiteralItem (',' items+=ArrayLiteralItem)* ','?;
+
+ArrayLiteralItem:
+	Expression;
+
+DictionaryLiteral:
+	'[' DictionaryLiteralItems ']' |
+	'[' ':' ']';
+
+DictionaryLiteralItems:
+	items+=DictionaryLiteralItem (',' items+=DictionaryLiteralItems)* ','?;
+
+DictionaryLiteralItem:
+	key=Expression ':' value=Expression;
+
+SelfExpression:
+	'self' |
+	'self' '.' Identifier |
+	'self' '[' Expression ']' |
+	'self' '.' 'init';
+
+SuperclassExpression:
+	SuperclassMethodExpression |
+	SuperclassSubscriptExpression |
+	SuperclassInitializerExpression;
+
+SuperclassMethodExpression:
+	'super' '.' Identifier;
+
+SuperclassSubscriptExpression:
+	'super' '[' Expression ']';
+
+SuperclassInitializerExpression:
+	'super' '.' 'init';
+
+ClosureExpression:
+	'{' signature=ClosureSignature? body=Statements '}';
+
+ClosureSignature:
+	clause=ParameterClause result=FunctionResult? 'in' |
+	identifiers=IdentifierList result=FunctionResult? 'in' |
+	CaptureList clause=ParameterClause result=FunctionResult? 'in' |
+	CaptureList identifiers=IdentifierList result=FunctionResult? 'in' |
+	CaptureList 'in';
+
+CaptureList:
+	'[' CaptureSpecifier Expression ']';
+
+terminal CaptureSpecifier:
+	'weak' |
+	'unowned' |
+	'unowned(safe)' |
+	'unowned(unsafe)';
+
+ImplicitMemberExpression:
+	'.' Identifier;
+
+ParenthesizedExpression:
+	'(' ExpressionElementList? ')';
+
+ExpressionElementList:
+	expressions+=ExpressionElement (',' expressions+=ExpressionElement)*;
+
+ExpressionElement:
+	Expression |
+	Identifier ':' Expression;
+
+WildcardExpression:
+	'_';
+
+PostfixExpression:
+	PrimaryExpression |
+	//	PostfixExpression PostfixOperator | // TODO Fix this, this is the naff bit
+	FunctionCallExpression |
+	InitializerExpression |
+	ExplicitMemberExpression |
+	PostfixSelfExpression |
+	DynamicTypeExpression |
+	SubscriptExpression |
+	ForcedValueExpression |
+	OptionalChainingExpression;
+
+FunctionCallExpression:
+	postfix=PostfixExpression parenthesized=ParenthesizedExpression |
+	postfix=PostfixExpression parenthesized=ParenthesizedExpression? trailing=TrailingClosure;
+
+TrailingClosure:
+	ClosureExpression;
+
+InitializerExpression:
+	postfix=PostfixExpression '.' 'init';
+
+ExplicitMemberExpression:
+	postfix=PostfixExpression '.' DecimalDigits |
+	postfix=PostfixExpression '.' Identifier generic=GenericArgumentClause?;
+
+PostfixSelfExpression:
+	postfix=PostfixExpression '.' 'self';
+
+DynamicTypeExpression:
+	postfix=PostfixExpression '.' 'dynamicType';
+
+SubscriptExpression:
+	postfix=PostfixExpression '[' expressions=ExpressionList ']';
+
+ForcedValueExpression:
+	postfix=PostfixExpression '!';
+
+OptionalChainingExpression:
+	postfix=PostfixExpression '?';
+
+/* Lexical Structure */
+IdentifierList:
+	identifiers+=Identifier (',' identifiers+=Identifier)*;
+
+	/*
+
+Identifier: ID;
+	IdentifierHead IdentifierCharacters? |
+	'`' IdentifierHead IdentifierCharacters? '`' |
+	ImplicitParameterName |
+	Identifier |
+ Identifier ',' IdentifierList;
+
+IdentifierHead:
+	|
+	'_' |
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+;
+
+IdentifierCharacter:
+	|
+	|
+	IdentifierHead |
+	IdentifierCharacter IdentifierCharacters?;
+*/
+ImplicitParameterName:
+	'$' DecimalDigits;
+
+Literal:
+	NumericLiteral |
+	StringLiteral |
+	BooleanLiteral |
+	NilLiteral;
+
+NumericLiteral:
+	'-'? IntegerLiteral |
+	'-'? FloatingPointLiteral;
+
+BooleanLiteral:
+	'true' |
+	'false';
+
+NilLiteral:
+	'nil';
+
+IntegerLiteral:
+	BinaryLiteral |
+	OctalLiteral |
+	DecimalLiteral |
+	HexadecimalLiteral;
+
+terminal BinaryLiteral:
+	'0b' BinaryDigit BinaryLiteralCharacter*;
+
+terminal BinaryDigit:
+	'0' | '1';
+
+terminal BinaryLiteralCharacter:
+	BinaryDigit | '_';
+
+terminal OctalLiteral:
+	'0o' OctalDigit OctalLiteralCharacter*;
+
+terminal OctalDigit:
+	'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
+
+terminal OctalLiteralCharacter:
+	OctalDigit | '_';
+
+terminal DecimalLiteral:
+	DecimalLiteralCharacter DecimalLiteralCharacter*;
+
+terminal DecimalDigit:
+	'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
+
+terminal DecimalLiteralCharacter:
+	DecimalDigit | '_';
+
+terminal HexadecimalLiteral:
+	'0x' HexadecimalDigit HexadecimalLiteralCharacter*;
+
+terminal HexadecimalDigit:
+	'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' |
+	'a' | 'b' | 'c' | 'd' | 'e' | 'f' |
+	'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+
+terminal HexadecimalLiteralCharacter:
+	HexadecimalDigit | '_';
+
+FloatingPointLiteral:
+	DecimalLiteral DecimalFraction? DecimalExponent? |
+	HexadecimalLiteral HexadecimalFraction? HexadecimalExponent;
+
+DecimalFraction:
+	'.' DecimalLiteral;
+
+DecimalExponent:
+	FloatingPointE Sign? DecimalLiteral;
+
+HexadecimalFraction:
+	'.' HexadecimalDigit HexadecimalLiteralCharacter*;
+
+HexadecimalExponent:
+	FloatingPointP Sign? DecimalLiteral;
+
+FloatingPointE:
+	'e' |
+	'E';
+
+FloatingPointP:
+	'p' |
+	'P';
+
+Sign:
+	'+' |
+	'-';
+
+StringLiteral:
+	'"' QuotedText? '"';
+
+QuotedText:
+	QuotedTextItem text=QuotedText?;
+
+	// TODO fix
+QuotedTextItem:
+	EscapedCharacter |
+	'\\(' Expression ')' |
+	ANY_OTHER;
+
+	// TODO Check
+EscapedCharacter:
+//	'\0' |
+	'\\' | '\t' | '\n' | '\r' | '\"' | '\'' | '\\u' '{' UnicodeScalarDigits '}';
+
+	// between 1-8
+UnicodeScalarDigits:
+	HexadecimalDigit+;
+
+Operator:
+	head=OperatorHead chars=OperatorCharacters? | head=DotOperatorHead chars=DotOperatorCharacters?;
+
+OperatorHead:
+	'/' | '=' | '-' | '+' | '!' | '*' | '%' | '<' | '>' | '&' | '|' | '^' | '~' | '?';
+	// TODO Plus some others
+OperatorCharacter:
+	OperatorHead;
+
+OperatorCharacters:
+	characters+=(OperatorCharacter)+;
+
+DotOperatorHead:
+	'..';
+
+DotOperatorCharacter:
+	'.' | OperatorCharacter;
+
+DotOperatorCharacters:
+	characters+=(DotOperatorCharacter)+;
+
+BinaryOperator:
+	Operator;
+
+PrefixOperator:
+	Operator;
+
+PostfixOperator:
+	Operator;
+
+/* Types */
+Type returns Type:
+	ArrayType | DictionaryType | FunctionType | TypeIdentifier | TupleType | OptionalType |
+	ImplicitlyUnwrappedOptionalType | ProtocolCompositionType | MetatypeType;
+
+TypeAnnotation:
+	':' attributes=Attributes? type=Type;
+
+TypeIdentifier:
+	TypeName GenericArgumentClause? | TypeName GenericArgumentClause? '.' id=TypeIdentifier;
+
+TypeName:
+	Identifier;
+
+TupleType:
+	'(' TupleTypeBody? ')';
+
+TupleTypeBody:
+	TupleTypeElementList '...'?;
+
+TupleTypeElementList:
+	types+=TupleTypeElement (',' types+=TupleTypeElementList)*;
+
+TupleTypeElement:
+	attributes=Attributes? 'inout'? type=Type | 'inout'? name=ElementName annotation=TypeAnnotation;
+
+ElementName:
+	Identifier;
+
+FunctionType:
+	parameterType=Type '->' returnType=Type;
+
+ArrayType returns Type:
+	'[' Type ']';
+
+DictionaryType:
+	'[' key=Type ':' value=Type ']';
+
+OptionalType returns Type:
+	Type '?';
+
+ImplicitlyUnwrappedOptionalType returns Type:
+	Type '!';
+
+ProtocolCompositionType:
+	'protocol' '<' ProtocolIdentifierList? '>';
+
+ProtocolIdentifierList:
+	identifiers+=ProtocolIdentifier (',' identifiers+=ProtocolIdentifier)*;
+
+ProtocolIdentifier:
+	TypeIdentifier;
+
+MetatypeType returns Type:
+	Type '.' 'Type' | Type '.' 'Protocol';
+
+TypeInheritanceClause:
+	':' ClassRequirement ',' TypeInheritanceList | ':' ClassRequirement | ':' TypeInheritanceList;
+
+TypeInheritanceList:
+	identifiers+=TypeIdentifier (',' identifiers+=TypeIdentifier)*;
+
+ClassRequirement:
+	'class'; 
