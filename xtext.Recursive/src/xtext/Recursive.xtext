@@ -1,0 +1,16 @@
+grammar xtend.Recursive with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.eclipse.org/xtext/Recursive"
+
+Program:
+	statements+=Statement+;
+
+Statement:
+	'var' ID ':' Type ';';
+
+Type:
+	'Int' |
+//	Type '?' |
+	'Bool';
+
+

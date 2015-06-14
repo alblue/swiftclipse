@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="xtext.Recursive.sdk"
+	label="Recursive SDK Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="xtext.Recursive"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="xtext.Recursive.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+</feature>
