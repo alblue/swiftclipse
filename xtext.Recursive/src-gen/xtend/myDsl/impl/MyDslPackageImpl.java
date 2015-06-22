@@ -2,15 +2,22 @@
  */
 package xtend.myDsl.impl;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import xtend.myDsl.ArrayType;
+import xtend.myDsl.BoolType;
+import xtend.myDsl.ImplicitlyUnwrappedType;
+import xtend.myDsl.IntType;
 import xtend.myDsl.MyDslFactory;
 import xtend.myDsl.MyDslPackage;
+import xtend.myDsl.OptionallyType;
 import xtend.myDsl.Program;
+import xtend.myDsl.Statement;
+import xtend.myDsl.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +33,55 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass programEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass statementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass optionallyTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass implicitlyUnwrappedTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass intTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass boolTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass arrayTypeEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -105,9 +161,109 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProgram_Statements()
+  public EReference getProgram_Statements()
   {
-    return (EAttribute)programEClass.getEStructuralFeatures().get(0);
+    return (EReference)programEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStatement()
+  {
+    return statementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getType()
+  {
+    return typeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOptionallyType()
+  {
+    return optionallyTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOptionallyType_Type()
+  {
+    return (EReference)optionallyTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getImplicitlyUnwrappedType()
+  {
+    return implicitlyUnwrappedTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getImplicitlyUnwrappedType_Type()
+  {
+    return (EReference)implicitlyUnwrappedTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIntType()
+  {
+    return intTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBoolType()
+  {
+    return boolTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getArrayType()
+  {
+    return arrayTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getArrayType_Type()
+  {
+    return (EReference)arrayTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -141,7 +297,24 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     // Create classes and their features
     programEClass = createEClass(PROGRAM);
-    createEAttribute(programEClass, PROGRAM__STATEMENTS);
+    createEReference(programEClass, PROGRAM__STATEMENTS);
+
+    statementEClass = createEClass(STATEMENT);
+
+    typeEClass = createEClass(TYPE);
+
+    optionallyTypeEClass = createEClass(OPTIONALLY_TYPE);
+    createEReference(optionallyTypeEClass, OPTIONALLY_TYPE__TYPE);
+
+    implicitlyUnwrappedTypeEClass = createEClass(IMPLICITLY_UNWRAPPED_TYPE);
+    createEReference(implicitlyUnwrappedTypeEClass, IMPLICITLY_UNWRAPPED_TYPE__TYPE);
+
+    intTypeEClass = createEClass(INT_TYPE);
+
+    boolTypeEClass = createEClass(BOOL_TYPE);
+
+    arrayTypeEClass = createEClass(ARRAY_TYPE);
+    createEReference(arrayTypeEClass, ARRAY_TYPE__TYPE);
   }
 
   /**
@@ -173,10 +346,33 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    typeEClass.getESuperTypes().add(this.getStatement());
+    optionallyTypeEClass.getESuperTypes().add(this.getType());
+    implicitlyUnwrappedTypeEClass.getESuperTypes().add(this.getType());
+    intTypeEClass.getESuperTypes().add(this.getType());
+    boolTypeEClass.getESuperTypes().add(this.getType());
+    arrayTypeEClass.getESuperTypes().add(this.getType());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProgram_Statements(), ecorePackage.getEString(), "statements", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Statements(), this.getStatement(), null, "statements", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(optionallyTypeEClass, OptionallyType.class, "OptionallyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOptionallyType_Type(), this.getType(), null, "type", null, 0, 1, OptionallyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(implicitlyUnwrappedTypeEClass, ImplicitlyUnwrappedType.class, "ImplicitlyUnwrappedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getImplicitlyUnwrappedType_Type(), this.getType(), null, "type", null, 0, 1, ImplicitlyUnwrappedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(intTypeEClass, IntType.class, "IntType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(boolTypeEClass, BoolType.class, "BoolType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(arrayTypeEClass, ArrayType.class, "ArrayType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getArrayType_Type(), this.getType(), null, "type", null, 0, 1, ArrayType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

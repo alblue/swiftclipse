@@ -37,8 +37,15 @@ public class RecursiveParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
+					put(grammarAccess.getTypeAccess().getAlternatives_1(), "rule__Type__Alternatives_1");
+					put(grammarAccess.getBaseTypeAccess().getAlternatives(), "rule__BaseType__Alternatives");
 					put(grammarAccess.getStatementAccess().getGroup(), "rule__Statement__Group__0");
+					put(grammarAccess.getTypeAccess().getGroup(), "rule__Type__Group__0");
+					put(grammarAccess.getTypeAccess().getGroup_1_0(), "rule__Type__Group_1_0__0");
+					put(grammarAccess.getTypeAccess().getGroup_1_1(), "rule__Type__Group_1_1__0");
+					put(grammarAccess.getBaseTypeAccess().getGroup_0(), "rule__BaseType__Group_0__0");
+					put(grammarAccess.getBaseTypeAccess().getGroup_1(), "rule__BaseType__Group_1__0");
+					put(grammarAccess.getBaseTypeAccess().getGroup_2(), "rule__BaseType__Group_2__0");
 					put(grammarAccess.getProgramAccess().getStatementsAssignment(), "rule__Program__StatementsAssignment");
 				}
 			};

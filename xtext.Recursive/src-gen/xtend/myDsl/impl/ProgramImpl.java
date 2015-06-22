@@ -4,16 +4,21 @@ package xtend.myDsl.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import xtend.myDsl.MyDslPackage;
 import xtend.myDsl.Program;
+import xtend.myDsl.Statement;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,14 +36,14 @@ import xtend.myDsl.Program;
 public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
 {
   /**
-   * The cached value of the '{@link #getStatements() <em>Statements</em>}' attribute list.
+   * The cached value of the '{@link #getStatements() <em>Statements</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getStatements()
    * @generated
    * @ordered
    */
-  protected EList<String> statements;
+  protected EList<Statement> statements;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,13 +71,29 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getStatements()
+  public EList<Statement> getStatements()
   {
     if (statements == null)
     {
-      statements = new EDataTypeEList<String>(String.class, this, MyDslPackage.PROGRAM__STATEMENTS);
+      statements = new EObjectContainmentEList<Statement>(Statement.class, this, MyDslPackage.PROGRAM__STATEMENTS);
     }
     return statements;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case MyDslPackage.PROGRAM__STATEMENTS:
+        return ((InternalEList<?>)getStatements()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -104,7 +125,7 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
     {
       case MyDslPackage.PROGRAM__STATEMENTS:
         getStatements().clear();
-        getStatements().addAll((Collection<? extends String>)newValue);
+        getStatements().addAll((Collection<? extends Statement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,23 +162,6 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
         return statements != null && !statements.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (statements: ");
-    result.append(statements);
-    result.append(')');
-    return result.toString();
   }
 
 } //ProgramImpl

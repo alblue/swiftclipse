@@ -7,13 +7,21 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
+import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
 import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
+import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import xtend.myDsl.ArrayType;
+import xtend.myDsl.BoolType;
+import xtend.myDsl.ImplicitlyUnwrappedType;
+import xtend.myDsl.IntType;
 import xtend.myDsl.MyDslPackage;
+import xtend.myDsl.OptionallyType;
 import xtend.myDsl.Program;
 import xtend.services.RecursiveGrammarAccess;
 
@@ -26,6 +34,21 @@ public class RecursiveSemanticSequencer extends AbstractDelegatingSemanticSequen
 	@Override
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == MyDslPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case MyDslPackage.ARRAY_TYPE:
+				sequence_BaseType(context, (ArrayType) semanticObject); 
+				return; 
+			case MyDslPackage.BOOL_TYPE:
+				sequence_BaseType(context, (BoolType) semanticObject); 
+				return; 
+			case MyDslPackage.IMPLICITLY_UNWRAPPED_TYPE:
+				sequence_Type(context, (ImplicitlyUnwrappedType) semanticObject); 
+				return; 
+			case MyDslPackage.INT_TYPE:
+				sequence_BaseType(context, (IntType) semanticObject); 
+				return; 
+			case MyDslPackage.OPTIONALLY_TYPE:
+				sequence_Type(context, (OptionallyType) semanticObject); 
+				return; 
 			case MyDslPackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
@@ -35,9 +58,75 @@ public class RecursiveSemanticSequencer extends AbstractDelegatingSemanticSequen
 	
 	/**
 	 * Constraint:
+	 *     type=BaseType_ArrayType_2_2
+	 */
+	protected void sequence_BaseType(EObject context, ArrayType semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ARRAY_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ARRAY_TYPE__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getBaseTypeAccess().getArrayTypeTypeAction_2_2(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {BoolType}
+	 */
+	protected void sequence_BaseType(EObject context, BoolType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {IntType}
+	 */
+	protected void sequence_BaseType(EObject context, IntType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     statements+=Statement+
 	 */
 	protected void sequence_Program(EObject context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     type=Type_ImplicitlyUnwrappedType_1_1_1
+	 */
+	protected void sequence_Type(EObject context, ImplicitlyUnwrappedType semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.IMPLICITLY_UNWRAPPED_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.IMPLICITLY_UNWRAPPED_TYPE__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getTypeAccess().getImplicitlyUnwrappedTypeTypeAction_1_1_1(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     type=Type_OptionallyType_1_0_1
+	 */
+	protected void sequence_Type(EObject context, OptionallyType semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.OPTIONALLY_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.OPTIONALLY_TYPE__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getTypeAccess().getOptionallyTypeTypeAction_1_0_1(), semanticObject.getType());
+		feeder.finish();
 	}
 }

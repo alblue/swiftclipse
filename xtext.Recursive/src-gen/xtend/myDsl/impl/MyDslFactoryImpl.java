@@ -65,6 +65,13 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
     switch (eClass.getClassifierID())
     {
       case MyDslPackage.PROGRAM: return createProgram();
+      case MyDslPackage.STATEMENT: return createStatement();
+      case MyDslPackage.TYPE: return createType();
+      case MyDslPackage.OPTIONALLY_TYPE: return createOptionallyType();
+      case MyDslPackage.IMPLICITLY_UNWRAPPED_TYPE: return createImplicitlyUnwrappedType();
+      case MyDslPackage.INT_TYPE: return createIntType();
+      case MyDslPackage.BOOL_TYPE: return createBoolType();
+      case MyDslPackage.ARRAY_TYPE: return createArrayType();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -79,6 +86,83 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     ProgramImpl program = new ProgramImpl();
     return program;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Statement createStatement()
+  {
+    StatementImpl statement = new StatementImpl();
+    return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Type createType()
+  {
+    TypeImpl type = new TypeImpl();
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OptionallyType createOptionallyType()
+  {
+    OptionallyTypeImpl optionallyType = new OptionallyTypeImpl();
+    return optionallyType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ImplicitlyUnwrappedType createImplicitlyUnwrappedType()
+  {
+    ImplicitlyUnwrappedTypeImpl implicitlyUnwrappedType = new ImplicitlyUnwrappedTypeImpl();
+    return implicitlyUnwrappedType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IntType createIntType()
+  {
+    IntTypeImpl intType = new IntTypeImpl();
+    return intType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BoolType createBoolType()
+  {
+    BoolTypeImpl boolType = new BoolTypeImpl();
+    return boolType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ArrayType createArrayType()
+  {
+    ArrayTypeImpl arrayType = new ArrayTypeImpl();
+    return arrayType;
   }
 
   /**

@@ -12,19 +12,23 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalRecursiveLexer extends Lexer {
-    public static final int RULE_ID=4;
-    public static final int RULE_WS=9;
     public static final int RULE_STRING=6;
-    public static final int RULE_ANY_OTHER=10;
     public static final int RULE_SL_COMMENT=8;
+    public static final int T__19=19;
     public static final int T__15=15;
-    public static final int RULE_INT=5;
+    public static final int T__16=16;
+    public static final int T__17=17;
+    public static final int T__18=18;
     public static final int T__11=11;
-    public static final int RULE_ML_COMMENT=7;
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int EOF=-1;
+    public static final int RULE_ID=4;
+    public static final int RULE_WS=9;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int RULE_INT=5;
+    public static final int RULE_ML_COMMENT=7;
 
     // delegates
     // delegators
@@ -44,10 +48,10 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = T__11;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:11:7: ( 'Int' )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:11:9: 'Int'
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:11:7: ( 'var' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:11:9: 'var'
             {
-            match("Int"); 
+            match("var"); 
 
 
             }
@@ -65,11 +69,10 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:12:7: ( 'Bool' )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:12:9: 'Bool'
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:12:7: ( ':' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:12:9: ':'
             {
-            match("Bool"); 
-
+            match(':'); 
 
             }
 
@@ -86,11 +89,10 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:13:7: ( 'var' )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:13:9: 'var'
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:13:7: ( ';' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:13:9: ';'
             {
-            match("var"); 
-
+            match(';'); 
 
             }
 
@@ -107,10 +109,10 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:14:7: ( ':' )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:14:9: ':'
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:14:7: ( '?' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:14:9: '?'
             {
-            match(':'); 
+            match('?'); 
 
             }
 
@@ -127,10 +129,10 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:15:7: ( ';' )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:15:9: ';'
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:15:7: ( '!' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:15:9: '!'
             {
-            match(';'); 
+            match('!'); 
 
             }
 
@@ -142,15 +144,97 @@ public class InternalRecursiveLexer extends Lexer {
     }
     // $ANTLR end "T__15"
 
+    // $ANTLR start "T__16"
+    public final void mT__16() throws RecognitionException {
+        try {
+            int _type = T__16;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:16:7: ( 'Int' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:16:9: 'Int'
+            {
+            match("Int"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__16"
+
+    // $ANTLR start "T__17"
+    public final void mT__17() throws RecognitionException {
+        try {
+            int _type = T__17;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:17:7: ( 'Bool' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:17:9: 'Bool'
+            {
+            match("Bool"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__17"
+
+    // $ANTLR start "T__18"
+    public final void mT__18() throws RecognitionException {
+        try {
+            int _type = T__18;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:18:7: ( '[' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:18:9: '['
+            {
+            match('['); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__18"
+
+    // $ANTLR start "T__19"
+    public final void mT__19() throws RecognitionException {
+        try {
+            int _type = T__19;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:19:7: ( ']' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:19:9: ']'
+            {
+            match(']'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__19"
+
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:356:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:356:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:858:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:858:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:356:11: ( '^' )?
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:858:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -159,7 +243,7 @@ public class InternalRecursiveLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:356:11: '^'
+                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:858:11: '^'
                     {
                     match('^'); 
 
@@ -177,7 +261,7 @@ public class InternalRecursiveLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:356:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:858:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -226,10 +310,10 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:358:10: ( ( '0' .. '9' )+ )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:358:12: ( '0' .. '9' )+
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:860:10: ( ( '0' .. '9' )+ )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:860:12: ( '0' .. '9' )+
             {
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:358:12: ( '0' .. '9' )+
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:860:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -243,7 +327,7 @@ public class InternalRecursiveLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:358:13: '0' .. '9'
+            	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:860:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -275,10 +359,10 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -296,10 +380,10 @@ public class InternalRecursiveLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -315,7 +399,7 @@ public class InternalRecursiveLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:21: '\\\\' .
+                    	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -323,7 +407,7 @@ public class InternalRecursiveLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -348,10 +432,10 @@ public class InternalRecursiveLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -367,7 +451,7 @@ public class InternalRecursiveLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:54: '\\\\' .
+                    	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -375,7 +459,7 @@ public class InternalRecursiveLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:360:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:862:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -418,12 +502,12 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:362:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:362:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:864:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:864:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:362:24: ( options {greedy=false; } : . )*
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:864:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -448,7 +532,7 @@ public class InternalRecursiveLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:362:52: .
+            	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:864:52: .
             	    {
             	    matchAny(); 
 
@@ -478,12 +562,12 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:364:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:364:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:866:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:866:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:364:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:866:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -496,7 +580,7 @@ public class InternalRecursiveLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:364:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:866:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -516,7 +600,7 @@ public class InternalRecursiveLexer extends Lexer {
                 }
             } while (true);
 
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:364:40: ( ( '\\r' )? '\\n' )?
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:866:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -525,9 +609,9 @@ public class InternalRecursiveLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:364:41: ( '\\r' )? '\\n'
+                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:866:41: ( '\\r' )? '\\n'
                     {
-                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:364:41: ( '\\r' )?
+                    // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:866:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -536,7 +620,7 @@ public class InternalRecursiveLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:364:41: '\\r'
+                            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:866:41: '\\r'
                             {
                             match('\r'); 
 
@@ -568,10 +652,10 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:366:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:366:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:868:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:868:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:366:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:868:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -625,8 +709,8 @@ public class InternalRecursiveLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:368:16: ( . )
-            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:368:18: .
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:870:16: ( . )
+            // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:870:18: .
             {
             matchAny(); 
 
@@ -641,8 +725,8 @@ public class InternalRecursiveLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=12;
+        // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=16;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -681,49 +765,77 @@ public class InternalRecursiveLexer extends Lexer {
                 }
                 break;
             case 6 :
-                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:40: RULE_ID
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:40: T__16
+                {
+                mT__16(); 
+
+                }
+                break;
+            case 7 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:46: T__17
+                {
+                mT__17(); 
+
+                }
+                break;
+            case 8 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:52: T__18
+                {
+                mT__18(); 
+
+                }
+                break;
+            case 9 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:58: T__19
+                {
+                mT__19(); 
+
+                }
+                break;
+            case 10 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:64: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 7 :
-                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:48: RULE_INT
+            case 11 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:72: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 8 :
-                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:57: RULE_STRING
+            case 12 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:81: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 9 :
-                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:69: RULE_ML_COMMENT
+            case 13 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:93: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 10 :
-                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:85: RULE_SL_COMMENT
+            case 14 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:109: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 11 :
-                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:101: RULE_WS
+            case 15 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:125: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 12 :
-                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:109: RULE_ANY_OTHER
+            case 16 :
+                // ../xtext.Recursive.ui/src-gen/xtend/ui/contentassist/antlr/internal/InternalRecursive.g:1:133: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -737,36 +849,44 @@ public class InternalRecursiveLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\3\17\2\uffff\1\15\2\uffff\3\15\2\uffff\1\17\1\uffff\2\17\7\uffff\1\34\1\17\1\36\1\uffff\1\37\2\uffff";
+        "\1\uffff\1\23\4\uffff\2\23\2\uffff\1\21\2\uffff\3\21\2\uffff\1\23\5\uffff\2\23\7\uffff\1\44\1\45\1\23\2\uffff\1\47\1\uffff";
     static final String DFA12_eofS =
-        "\40\uffff";
+        "\50\uffff";
     static final String DFA12_minS =
-        "\1\0\1\156\1\157\1\141\2\uffff\1\101\2\uffff\2\0\1\52\2\uffff\1\164\1\uffff\1\157\1\162\7\uffff\1\60\1\154\1\60\1\uffff\1\60\2\uffff";
+        "\1\0\1\141\4\uffff\1\156\1\157\2\uffff\1\101\2\uffff\2\0\1\52\2\uffff\1\162\5\uffff\1\164\1\157\7\uffff\2\60\1\154\2\uffff\1\60\1\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\156\1\157\1\141\2\uffff\1\172\2\uffff\2\uffff\1\57\2\uffff\1\164\1\uffff\1\157\1\162\7\uffff\1\172\1\154\1\172\1\uffff\1\172\2\uffff";
+        "\1\uffff\1\141\4\uffff\1\156\1\157\2\uffff\1\172\2\uffff\2\uffff\1\57\2\uffff\1\162\5\uffff\1\164\1\157\7\uffff\2\172\1\154\2\uffff\1\172\1\uffff";
     static final String DFA12_acceptS =
-        "\4\uffff\1\4\1\5\1\uffff\1\6\1\7\3\uffff\1\13\1\14\1\uffff\1\6\2\uffff\1\4\1\5\1\7\1\10\1\11\1\12\1\13\3\uffff\1\1\1\uffff\1\3\1\2";
+        "\2\uffff\1\2\1\3\1\4\1\5\2\uffff\1\10\1\11\1\uffff\1\12\1\13\3\uffff\1\17\1\20\1\uffff\1\12\1\2\1\3\1\4\1\5\2\uffff\1\10\1\11\1\13\1\14\1\15\1\16\1\17\3\uffff\1\1\1\6\1\uffff\1\7";
     static final String DFA12_specialS =
-        "\1\2\10\uffff\1\1\1\0\25\uffff}>";
+        "\1\0\14\uffff\1\1\1\2\31\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\15\2\14\2\15\1\14\22\15\1\14\1\15\1\11\4\15\1\12\7\15\1\13\12\10\1\4\1\5\5\15\1\7\1\2\6\7\1\1\21\7\3\15\1\6\1\7\1\15\25\7\1\3\4\7\uff85\15",
-            "\1\16",
-            "\1\20",
-            "\1\21",
+            "\11\21\2\20\2\21\1\20\22\21\1\20\1\5\1\15\4\21\1\16\7\21\1\17\12\14\1\2\1\3\3\21\1\4\1\21\1\13\1\7\6\13\1\6\21\13\1\10\1\21\1\11\1\12\1\13\1\21\25\13\1\1\4\13\uff85\21",
+            "\1\22",
             "",
             "",
-            "\32\17\4\uffff\1\17\1\uffff\32\17",
             "",
             "",
-            "\0\25",
-            "\0\25",
-            "\1\26\4\uffff\1\27",
-            "",
-            "",
+            "\1\30",
             "\1\31",
             "",
-            "\1\32",
-            "\1\33",
+            "",
+            "\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
+            "",
+            "\0\35",
+            "\0\35",
+            "\1\36\4\uffff\1\37",
+            "",
+            "",
+            "\1\41",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\42",
+            "\1\43",
             "",
             "",
             "",
@@ -774,12 +894,12 @@ public class InternalRecursiveLexer extends Lexer {
             "",
             "",
             "",
-            "\12\17\7\uffff\32\17\4\uffff\1\17\1\uffff\32\17",
-            "\1\35",
-            "\12\17\7\uffff\32\17\4\uffff\1\17\1\uffff\32\17",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\46",
             "",
-            "\12\17\7\uffff\32\17\4\uffff\1\17\1\uffff\32\17",
             "",
+            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
             ""
     };
 
@@ -813,61 +933,69 @@ public class InternalRecursiveLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_10 = input.LA(1);
+                        int LA12_0 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_10>='\u0000' && LA12_10<='\uFFFF')) ) {s = 21;}
+                        if ( (LA12_0=='v') ) {s = 1;}
 
-                        else s = 13;
+                        else if ( (LA12_0==':') ) {s = 2;}
+
+                        else if ( (LA12_0==';') ) {s = 3;}
+
+                        else if ( (LA12_0=='?') ) {s = 4;}
+
+                        else if ( (LA12_0=='!') ) {s = 5;}
+
+                        else if ( (LA12_0=='I') ) {s = 6;}
+
+                        else if ( (LA12_0=='B') ) {s = 7;}
+
+                        else if ( (LA12_0=='[') ) {s = 8;}
+
+                        else if ( (LA12_0==']') ) {s = 9;}
+
+                        else if ( (LA12_0=='^') ) {s = 10;}
+
+                        else if ( (LA12_0=='A'||(LA12_0>='C' && LA12_0<='H')||(LA12_0>='J' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='u')||(LA12_0>='w' && LA12_0<='z')) ) {s = 11;}
+
+                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 12;}
+
+                        else if ( (LA12_0=='\"') ) {s = 13;}
+
+                        else if ( (LA12_0=='\'') ) {s = 14;}
+
+                        else if ( (LA12_0=='/') ) {s = 15;}
+
+                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 16;}
+
+                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='.')||(LA12_0>='<' && LA12_0<='>')||LA12_0=='@'||LA12_0=='\\'||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 17;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA12_9 = input.LA(1);
+                        int LA12_13 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_9>='\u0000' && LA12_9<='\uFFFF')) ) {s = 21;}
+                        if ( ((LA12_13>='\u0000' && LA12_13<='\uFFFF')) ) {s = 29;}
 
-                        else s = 13;
+                        else s = 17;
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA12_0 = input.LA(1);
+                        int LA12_14 = input.LA(1);
 
                         s = -1;
-                        if ( (LA12_0=='I') ) {s = 1;}
+                        if ( ((LA12_14>='\u0000' && LA12_14<='\uFFFF')) ) {s = 29;}
 
-                        else if ( (LA12_0=='B') ) {s = 2;}
-
-                        else if ( (LA12_0=='v') ) {s = 3;}
-
-                        else if ( (LA12_0==':') ) {s = 4;}
-
-                        else if ( (LA12_0==';') ) {s = 5;}
-
-                        else if ( (LA12_0=='^') ) {s = 6;}
-
-                        else if ( (LA12_0=='A'||(LA12_0>='C' && LA12_0<='H')||(LA12_0>='J' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='u')||(LA12_0>='w' && LA12_0<='z')) ) {s = 7;}
-
-                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 8;}
-
-                        else if ( (LA12_0=='\"') ) {s = 9;}
-
-                        else if ( (LA12_0=='\'') ) {s = 10;}
-
-                        else if ( (LA12_0=='/') ) {s = 11;}
-
-                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 12;}
-
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='.')||(LA12_0>='<' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 13;}
+                        else s = 17;
 
                         if ( s>=0 ) return s;
                         break;

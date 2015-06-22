@@ -16,10 +16,9 @@ Statement:
 // var all:[Int?!?!]??!!
 
 Type:
-	'Int' |
-//	Type '?' |
-//	Type '!' |
-	'[' Type ']' |
-	'Bool';
+	BaseType ('?' {OptionallyType.type=current}|'!' {ImplicitlyUnwrappedType.type=current})* ;
 
-
+BaseType returns Type:
+	{IntType} 'Int' |
+	{BoolType} 'Bool' |
+	/* {ArrayType} */ '[' Type {ArrayType.type = current} ']';

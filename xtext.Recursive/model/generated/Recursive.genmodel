@@ -8,7 +8,20 @@
   <genPackages prefix="MyDsl" basePackage="xtend" disposableProviderFactory="true"
       fileExtensions="recursive" ecorePackage="Recursive.ecore#/">
     <genClasses ecoreClass="Recursive.ecore#//Program">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Recursive.ecore#//Program/statements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Recursive.ecore#//Program/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Recursive.ecore#//Statement"/>
+    <genClasses ecoreClass="Recursive.ecore#//Type"/>
+    <genClasses ecoreClass="Recursive.ecore#//OptionallyType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Recursive.ecore#//OptionallyType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Recursive.ecore#//ImplicitlyUnwrappedType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Recursive.ecore#//ImplicitlyUnwrappedType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Recursive.ecore#//IntType"/>
+    <genClasses ecoreClass="Recursive.ecore#//BoolType"/>
+    <genClasses ecoreClass="Recursive.ecore#//ArrayType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Recursive.ecore#//ArrayType/type"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

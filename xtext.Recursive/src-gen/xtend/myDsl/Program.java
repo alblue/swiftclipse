@@ -25,19 +25,19 @@ import org.eclipse.emf.ecore.EObject;
 public interface Program extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Statements</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Statements</b></em>' containment reference list.
+   * The list contents are of type {@link xtend.myDsl.Statement}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Statements</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Statements</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Statements</em>' attribute list.
+   * @return the value of the '<em>Statements</em>' containment reference list.
    * @see xtend.myDsl.MyDslPackage#getProgram_Statements()
-   * @model unique="false"
+   * @model containment="true"
    * @generated
    */
-  EList<String> getStatements();
+  EList<Statement> getStatements();
 
 } // Program

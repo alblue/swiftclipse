@@ -68,31 +68,115 @@ public class RecursiveGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Type");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cIntKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cBoolKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cBaseTypeParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cQuestionMarkKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Action cOptionallyTypeTypeAction_1_0_1 = (Action)cGroup_1_0.eContents().get(1);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Keyword cExclamationMarkKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Action cImplicitlyUnwrappedTypeTypeAction_1_1_1 = (Action)cGroup_1_1.eContents().get(1);
 		
+		//// Should admit:
+		//// var i:Int;
+		//// var b:Bool;
+		//// var ii:[Int];
+		//// var bb:[Bool];
+		//// var all:[Int?!?!]??!!
 		//Type:
-		//	"Int" | //	Type '?' |
-		//	"Bool";
+		//	BaseType ("?" {OptionallyType.type=current} | "!" {ImplicitlyUnwrappedType.type=current})*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"Int" | //	Type '?' |
-		//"Bool"
+		//BaseType ("?" {OptionallyType.type=current} | "!" {ImplicitlyUnwrappedType.type=current})*
+		public Group getGroup() { return cGroup; }
+
+		//BaseType
+		public RuleCall getBaseTypeParserRuleCall_0() { return cBaseTypeParserRuleCall_0; }
+
+		//("?" {OptionallyType.type=current} | "!" {ImplicitlyUnwrappedType.type=current})*
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//"?" {OptionallyType.type=current}
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
+		//"?"
+		public Keyword getQuestionMarkKeyword_1_0_0() { return cQuestionMarkKeyword_1_0_0; }
+
+		//{OptionallyType.type=current}
+		public Action getOptionallyTypeTypeAction_1_0_1() { return cOptionallyTypeTypeAction_1_0_1; }
+
+		//"!" {ImplicitlyUnwrappedType.type=current}
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//"!"
+		public Keyword getExclamationMarkKeyword_1_1_0() { return cExclamationMarkKeyword_1_1_0; }
+
+		//{ImplicitlyUnwrappedType.type=current}
+		public Action getImplicitlyUnwrappedTypeTypeAction_1_1_1() { return cImplicitlyUnwrappedTypeTypeAction_1_1_1; }
+	}
+
+	public class BaseTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BaseType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cIntTypeAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cIntKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cBoolTypeAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cBoolKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Keyword cLeftSquareBracketKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final RuleCall cTypeParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Action cArrayTypeTypeAction_2_2 = (Action)cGroup_2.eContents().get(2);
+		private final Keyword cRightSquareBracketKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		
+		//BaseType returns Type:
+		//	{IntType} "Int" | {BoolType} "Bool" | / * {ArrayType} * / "[" Type {ArrayType.type=current} "]";
+		@Override public ParserRule getRule() { return rule; }
+
+		//{IntType} "Int" | {BoolType} "Bool" | / * {ArrayType} * / "[" Type {ArrayType.type=current} "]"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"Int"
-		public Keyword getIntKeyword_0() { return cIntKeyword_0; }
+		//{IntType} "Int"
+		public Group getGroup_0() { return cGroup_0; }
 
-		////	Type '?' |
+		//{IntType}
+		public Action getIntTypeAction_0_0() { return cIntTypeAction_0_0; }
+
+		//"Int"
+		public Keyword getIntKeyword_0_1() { return cIntKeyword_0_1; }
+
+		//{BoolType} "Bool"
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{BoolType}
+		public Action getBoolTypeAction_1_0() { return cBoolTypeAction_1_0; }
+
 		//"Bool"
-		public Keyword getBoolKeyword_1() { return cBoolKeyword_1; }
+		public Keyword getBoolKeyword_1_1() { return cBoolKeyword_1_1; }
+
+		/// * {ArrayType} * / "[" Type {ArrayType.type=current} "]"
+		public Group getGroup_2() { return cGroup_2; }
+
+		/// * {ArrayType} * / "["
+		public Keyword getLeftSquareBracketKeyword_2_0() { return cLeftSquareBracketKeyword_2_0; }
+
+		//Type
+		public RuleCall getTypeParserRuleCall_2_1() { return cTypeParserRuleCall_2_1; }
+
+		//{ArrayType.type=current}
+		public Action getArrayTypeTypeAction_2_2() { return cArrayTypeTypeAction_2_2; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_2_3() { return cRightSquareBracketKeyword_2_3; }
 	}
 	
 	
 	private final ProgramElements pProgram;
 	private final StatementElements pStatement;
 	private final TypeElements pType;
+	private final BaseTypeElements pBaseType;
 	
 	private final Grammar grammar;
 
@@ -106,6 +190,7 @@ public class RecursiveGrammarAccess extends AbstractGrammarElementFinder {
 		this.pProgram = new ProgramElements();
 		this.pStatement = new StatementElements();
 		this.pType = new TypeElements();
+		this.pBaseType = new BaseTypeElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -155,15 +240,30 @@ public class RecursiveGrammarAccess extends AbstractGrammarElementFinder {
 		return getStatementAccess().getRule();
 	}
 
+	//// Should admit:
+	//// var i:Int;
+	//// var b:Bool;
+	//// var ii:[Int];
+	//// var bb:[Bool];
+	//// var all:[Int?!?!]??!!
 	//Type:
-	//	"Int" | //	Type '?' |
-	//	"Bool";
+	//	BaseType ("?" {OptionallyType.type=current} | "!" {ImplicitlyUnwrappedType.type=current})*;
 	public TypeElements getTypeAccess() {
 		return pType;
 	}
 	
 	public ParserRule getTypeRule() {
 		return getTypeAccess().getRule();
+	}
+
+	//BaseType returns Type:
+	//	{IntType} "Int" | {BoolType} "Bool" | / * {ArrayType} * / "[" Type {ArrayType.type=current} "]";
+	public BaseTypeElements getBaseTypeAccess() {
+		return pBaseType;
+	}
+	
+	public ParserRule getBaseTypeRule() {
+		return getBaseTypeAccess().getRule();
 	}
 
 	//terminal ID:
